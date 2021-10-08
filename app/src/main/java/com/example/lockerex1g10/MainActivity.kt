@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
                     putExtra("nome", nm)
                 }
                 startActivity(intent)
+                finish()
             }else{
                 val toast = Toast.makeText(this,  "Utente o password errati" , Toast.LENGTH_LONG)
                 //the default toast view group is a relativelayout
