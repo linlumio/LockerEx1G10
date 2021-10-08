@@ -1,5 +1,6 @@
 package com.example.lockerex1g10
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ViewGroup
@@ -9,13 +10,13 @@ import android.widget.TextView
 import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
-    val accesso = mapOf<String, String>("pippo" to "goofy", "topolino" to "mickey", "paperino" to "donald", "batman" to "bruce", "ironman" to "stark", "alan" to "tnt")
+    //val accesso = mapOf<String, String>("pippo" to "goofy", "topolino" to "mickey", "paperino" to "donald", "batman" to "bruce", "ironman" to "stark", "alan" to "tnt")
+    val accesso:Accesso = Accesso()
     //prima schermata
     lateinit var bottone:Button
     lateinit var nome:EditText
     lateinit var pw:EditText
-    //seconda schermata
-    lateinit var listona:TextView
+    //seconda schermata va nella relativa classe
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,8 +29,11 @@ class MainActivity : AppCompatActivity() {
             var nm = nome.text.toString().lowercase()
             var pssw = pw.text.toString()
 
-            if(accesso.get(nm)==pssw){
-
+            if(accesso.accesso.get(nm)==pssw){
+                val intent = Intent(this, LoginResult::class.java).apply {
+                    putExtra("nome", nm)
+                }
+                startActivity(intent)
             }else{
                 val toast = Toast.makeText(this,  "Utente o password errati" , Toast.LENGTH_LONG)
                 //the default toast view group is a relativelayout
