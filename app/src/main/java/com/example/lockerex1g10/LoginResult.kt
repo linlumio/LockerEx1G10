@@ -37,6 +37,8 @@ class LoginResult : AppCompatActivity() {
 
         slogga = findViewById(R.id.slog)
         slogga.setOnClickListener{
+            AppPreferences.isLogin = false
+            AppPreferences.username = ""
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
